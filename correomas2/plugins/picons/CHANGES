@@ -1,0 +1,8 @@
+1.0, 2002-08-26 - fixed for squirrelmail 1.2.7
+0.4, 2001-11-01 - pure PHP; graceful decay; correct search algorithm; saner default
+                        option values
+0.3, 2001-10-21 - we now find the email address part of "From" with regular expressions,
+			rather than relying on library calls. Fixes some confusing cases
+			which weren't being caught
+0.2, 2001-10-21 - moved into separate plugin, released
+0.1, early October 2001 - initial version, only on pinkstuff

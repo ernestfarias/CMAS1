@@ -1,0 +1,61 @@
+Picons for SquirrelMail
+
+version 1.0
+
+How to install:
+~~~~~~~~~~~~~~~
+
+1. Unpack this archive into the plugins directory of your squirrelmail
+distribution.
+
+2. Get hold of the picon databases. You certainly need the UNKNOWN database;
+after that, install DOMAINS, MISC and USERS with that priority of importance.
+If you have the disk space, install them all.
+
+Under Debian, doing
+   apt-get install picon-unknown picon-domains picon-misc picon-users
+as root will do this for you. Otherwise, ftp them from
+   ftp://ftp.cs.indiana.edu/pub/faces/picons/db/
+and install them into the directory /usr/lib/picon (note: not picon_s_.)
+
+3. Optionally, create a directory /usr/local/lib/picon, where you can store
+your own picons. (You could also store the picons in plugins/picon, if you
+don't think any programs are going to need picons other than this one.)
+
+4. We're going to need a hook that doesn't exist in standard SquirrelMail.
+The patch "picons.patch" will add it for you. (It's good at least for version
+1.0.6). Go into your SquirrelMail root and type
+
+   patch -p1 <plugins/picons/picons.patch
+
+If you've installed it already, patch will tell you so, and ask whether you
+want to install it again. Say no.
+
+5. From your SquirrelMail root, run ./configure, choose plugins (option 8)
+and move "picons" into the installed list.
+
+That's it. Have a play. If it doesn't work, mail me and I'll try to give you
+a hand.
+
+What's coming in the next version:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Would anyone be interested in tools to mess around with picon databases?
+I could add provision for users to upload their own picons, and to add
+your picons to the global picons database in Indiana. Let me know whether
+you'd use it.
+
+Credits
+~~~~~~~
+
+Much thanks for encouragement and help goes to:
+
+Kent Brodie, Rick Castello, Steve Kinzler, Charles Marcus, nicholas,
+Przemek Piotrowski, Andrew Thurman, Valerie Turner, Michael Weber,
+and all the people who waited so patiently for v1.0.
+
+Have fun,
+
+Thomas
+thomas@thurman.org.uk
+

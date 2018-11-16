@@ -1,0 +1,31 @@
+body {
+  	background-color:#006699;
+	background-color:#ae5959;
+	font-family: Verdana,Geneva,Arial,Helvetica, sans-serif; 
+    font-size: 11px; 
+	color: #FFFFFF; 
+		 SCROLLBAR-FACE-COLOR: ae5959;
+	SCROLLBAR-HIGHLIGHT-COLOR: #FFCC99;
+	SCROLLBAR-SHADOW-COLOR: #666666;
+	SCROLLBAR-3DLIGHT-COLOR: #996633;
+	SCROLLBAR-ARROW-COLOR: #FFFFFF;
+	SCROLLBAR-TRACK-COLOR: #FFCC99;
+	SCROLLBAR-DARKSHADOW-COLOR: #996633;
+ 
+}
+
+button {
+	font-family: Verdana,Geneva,Arial,Helvetica, sans-serif;
+	font-size: 10px;
+
+}
+
+input {
+	font-family: Verdana,Geneva,Arial,Helvetica, sans-serif; 
+	font-size: 10px; 
+}
+
+a {
+	color: #00FF00;
+	 font-size: 11px; 
+}

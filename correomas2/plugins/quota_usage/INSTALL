@@ -1,0 +1,52 @@
+Installing Quota Usage
+======================
+
+1) Start with untaring the file into the plugins directory.
+Here is a example for the 1.3 version of the quota_usage plugin.
+
+  $ cd plugins
+  $ tar -zxvf quota_usage-1.3-1.2.7.tar.gz
+
+2) Change into the quota_usage directory, copy config.php.sample
+   to config.php and edit config.php, making adjustments as
+   you deem necessary.
+
+  $ cd quota_usage
+  $ cp config.php.sample config.php
+  $ vi config.php
+
+3) Then go to your config directory and run conf.pl.  Choose
+   option 8 and move the plugin from the "Available Plugins"
+   category to the "Installed Plugins" category.  Save and exit.
+
+  $ cd ../../config/
+  $ ./conf.pl
+
+   PLEASE NOTE that if you are using the MOTD warning 
+   functionality in this plugin and you have any other plugins 
+   that modify the MOTD, you should usually make sure that this 
+   one is listed AFTER the other MOTD-related plugins.
+
+
+
+Upgrading Quota Usage
+=====================
+
+1) Start with untaring the file into the plugins directory.
+Here is a example for the 1.3 version of the quota_usage plugin.
+
+  $ cd plugins
+  $ tar -zxvf quota_usage-1.3-1.2.7.tar.gz
+
+
+2) Change into the quota_usage directory, check your config.php
+   file against the new version, to see if there are any new
+   settings that you must add to your config.php file.
+
+  $ diff -Nau config.php config.php.sample
+
+   Or simply replace your config.php file with the provided sample
+   and reconfigure the plugin from scratch (see step 2 under the
+   installation procedure above).
+
+

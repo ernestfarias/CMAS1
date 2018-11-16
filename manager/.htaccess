@@ -1,0 +1,17 @@
+AddHandler x-httpd-php5 .php
+# -FrontPage-
+
+IndexIgnore .htaccess */.??* *~ *# */HEADER* */README* */_vti*
+
+<Limit GET POST>
+order deny,allow
+deny from all
+allow from all
+</Limit>
+<Limit PUT DELETE>
+order deny,allow
+deny from all
+</Limit>
+AuthName www.comermas.com.ar:80
+AuthUserFile /home/rm000120/public_html/_vti_pvt/service.pwd
+AuthGroupFile /home/rm000120/public_html/_vti_pvt/service.grp

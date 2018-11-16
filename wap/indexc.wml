@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE wml PUBLIC "-//WAPFORUM//DTD WML 1.1//EN" 
+"http://www.wapforum.org/DTD/wml_1.1.xml">
+
+<wml>
+<card id="inicio" title="www.comermas.com.ar">
+<p><strong>ComerMas</strong></p>
+<p>Proximamente podras realizar tu busqueda  <A HREF="#busqueda">AQUI</A></p>
+</card>
+
+<card id="busqueda" title="Wallpapers">
+<p>Resultados de Busqueda Proximamente</p>
+<p>...</p>
+<p>...</p>
+<A HREF="#inicio">Volver</A>
+</card>
+
+</wml>

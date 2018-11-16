@@ -1,0 +1,188 @@
+Quota Usage plugin for SquirrelMail
+===================================
+Ver 1.3, 07/11/04
+
+
+Original author: Bill Shupp <hostmaster@shupp.org>
+Modifications by: Paul Lesneiwski <pdontthink@angrynerds.com>
+
+
+
+Description
+===========
+
+This plugin retrieves the currect quota usage from the IMAP 
+server using the IMAP4 QUOTA extension.  It displays size-
+based quotas and/or message-count quotas, as given by the IMAP
+server.
+
+The quota is displayed above the folder listing, and optionally
+as a warning in the Message Of The Day if the quota is above
+a configurable "yellow alert" or "critial" level.
+
+
+
+Requirements
+============
+
+- IMAP server with QUOTA Extension support
+- Quota set for user.  (if it's not set, nothing is displayed).
+    NOTE:  Courier-IMAP may not report the quota if usage is 0%.  
+           Try sending a message to the user if this is the case.
+- Should work with versions of SquirrelMail as far back as 1.2.7 
+  at least as well as version 1.5.1.  Please report problems and
+  incompatibilities with these and other SquirrelMail versions.
+
+I've tested this with Courier-IMAP 1.4.0 and above .  Courier-IMAP only deals 
+with maildirquotas, as far as I know.  So it might not work with file system 
+quotas.  I use it successfully with Vpopmail 5.1.4 and above, a virtual domain 
+package for Qmail.
+
+As of version 0.2, it should work with Cyrus IMAP as well.
+
+
+
+Installation
+============
+
+Please read the INSTALL file.
+
+
+
+Configuration
+=============
+
+There are just a few optional configuration items:  
+
+   $fontsize                          --  Change this if you want to increase or decrease 
+                                          the size of the text and bar graph shown
+   $use_fancy                         --  Set this to 1 to use PHP's built-in image 
+                                          generation functionality to create quota 
+                                          displays images on the fly (which aren't 
+                                          currently any fancier than normal HTML-based 
+                                          quota display).  To use this, you must have
+                                          PHP compiled with GD support.  See:
+                                          http://php.net/manual/ref.image.php
+                                          Also, NOTE that although the plugin attempts
+                                          to prevent the browser from caching these images,
+                                          they are unintentionally cached sometimes, and
+                                          as such, using this option is not recommended.
+   $warn_percent                      --  Change this to match the warning level of your 
+                                          system.  It turns the bar graph to a red color
+                                          when a user gets to the specified level
+   $yellow_alert_percent              --  Set this to a percentage lower than $warn_percent
+                                          if you want the graph to turn yellow at the 
+                                          specified level.  Set to zero or an empty string
+                                          to disable.                              
+   $show_quota_intro_text             --  Turns the introductory text on or off
+   $show_quota_count_intro_text       --  Turns the introductory text for message count
+                                          quotas on or off
+   $show_yellow_alert_MOTD_warning    --  Turns the yellow alert login warning on 
+                                          or off
+   $show_critical_alert_MOTD_warning  --  Turns the critical alert login warning 
+                                          on or off
+   $intro_text                        --  This is an override for the text that shows up 
+                                          above the quota report; change as desired or 
+                                          leave it blank to use the default value.  Only
+                                          works if $show_quota_intro_text is turned on.
+   $intro_text_count                  --  This is an override for the text that shows up 
+                                          above the message count quota report (which only
+                                          is displayed if such a quota exists); change as 
+                                          desired or leave it blank to use the default 
+                                          value.  Only works if $show_quota_count_intro_text 
+                                          is turned on.
+   $yellow_alert_quota_MOTD           --  This is an override for the warning message that
+                                          is shown upon login if the user's quota usage is 
+                                          over the $yellow_alert_percent.  Change as desired
+                                          or leave it blank to use the default value.  Only 
+                                          works if $show_yellow_alert_MOTD_warning is turned on.
+   $critical_alert_quota_MOTD         --  This is an override for the warning message that
+                                          is shown upon login if the user's quota usage is 
+                                          over $warn_percent.  Change as desired or leave 
+                                          it blank to use the default value.  Only works if 
+                                          $show_critical_alert_MOTD_warning is turned on.
+   $use_1000KB_MB                     --  Allows you to override how Megabytes are
+                                          calculated: by default a Megabyte is 1024 
+                                          Kilobytes, but turn this setting to 1 if
+                                          you want to base Megabytes off of 1000 
+                                          Kilobyte calculations
+   $quota_usage_debug                 --  Helps diagnose problems by dumping QUOTA 
+                                          response from IMAP server to the screen
+
+These are all found in the config.php file.
+
+
+
+Useful Links
+============
+
+Courier-IMAP        http://www.inter7.com/courierimap
+RFC 2087            http://www.cis.ohio-state.edu/cgi-bin/rfc/rfc2087.html
+Maildir++           http://www.inter7.com/courierimap/README.maildirquota.html
+Vpopmail            http://www.inter7.com/vpopmail       
+
+
+
+Help Requests
+=============
+
+Help requests are welcome at my personal email address, but I
+request that you first post to the SquirrelMail Plugins mailing
+list, where you'll get faster help from more people and other
+people with the same problem will be able to see how your issue
+was resolved.  If you don't get good answers that way, you may
+try emailing me directly.
+
+Info about the SquirrelMail Plugins mailing list can be found
+on the SquirrelMail web site.  It is currently located at:
+
+http://lists.sourceforge.net/mailman/listinfo/squirrelmail-plugins
+squirrelmail-plugins@lists.sourceforge.net
+
+
+
+Change Log
+==========
+
+1.3 07/11/2004 - Added MOTD warning functionality
+               - Added message count quota display (Thanks to Curtis V. 
+                 Schleich <cvs@ccaonline.com>)
+               - Fixed MB calculation problems (Thanks to Robin Breathe 
+                 <rbreathe@brookes.ac.uk> and Adam Henry <hank@marinar.com>)
+               - Added debug flag (see config.php)
+               - Internationalization
+               - Added auto-created quota images (requires GD) (Thanks 
+                 to Mike Smith <mike@ftl.com>)
+               - XHTML fixes
+               - Code cleanup
+               - Please note that the configuration file for this version
+                 contains numerous changes and additions
+
+1.2 12/23/2003 - Now works with SquirrelMail 1.5
+               - Split out configuration items into separate file
+
+1.1 05/20/2003 - New setup.php format for better overall SquirrelMail performance
+               - Smaller graph size (matches font size of text)
+               - Internationalized all output
+               - Option to turn off (or change) the "current usage" text
+               - Updated for SquirrelMail plugin version reporting APIs
+               - "Yellow alert" option added
+
+1.0 12/19/2002 - Updated version to 1.0 (since I never get complaints anymore)
+               - verified that it works with register_globals off
+               - Minor updates to documentation
+               - added screen.jpg so people can see what it looks like
+0.5  4/29/2002 - Added HTML graph of usage - (me)
+               - Added Over Quota message- (Daniel Holdren)
+
+0.4 12/31/2001 - Added color based warning (turns red if over 80 percent) - (me)
+
+0.3 12/31/2001 - Fixed check for QUOTA capability to work on Courier
+               - Updated README, FAQ
+
+0.2 12/31/2001 - Added check for QUOTA capability (Daniel Holdren)
+               - switched to "GETQUOTAROOT" so Cyrus works. (Daniel Holdren)
+               - Percentage now shows one decimal.
+
+0.1 12/27/2001 - Initial Release
+

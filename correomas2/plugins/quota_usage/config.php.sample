@@ -1,0 +1,140 @@
+<?php
+
+   global $fontsize, $warn_percent, $yellow_alert_percent,
+          $quota_usage_debug, $intro_text, $yellow_alert_quota_MOTD,
+          $critical_alert_quota_MOTD, $show_quota_intro_text,
+          $show_yellow_alert_MOTD_warning, $show_critical_alert_MOTD_warning,
+          $use_1000KB_MB, $show_quota_count_intro_text, $intro_text_count,
+          $use_fancy;
+
+
+
+   // Edit the fontsize below
+   //
+   $fontsize = "-2";
+
+
+
+   // Edit the quota percent "threshholds" below
+   //
+   $warn_percent = 90;
+   $yellow_alert_percent = 70;
+
+
+
+   // Show quota bar as "fancy" image or as HTML-based table?
+   // (PHP must have GD functionality enabled; see:
+   // http://php.net/manual/ref.image.php )
+   //
+   // NOTE that although the plugin attempts to prevent the 
+   // browser from caching these images, they are 
+   // unintentionally cached sometimes, and as such, using 
+   // this option is not recommended.
+   //
+   // 1 = fancy, 0 (zero) = normal HTML-based
+   //
+   $use_fancy = 0;
+
+
+   
+   // Turn the introductory text on or off
+   // 1 = on, 0 (zero) = off
+   //
+   $show_quota_intro_text = 0;
+
+
+
+   // Turn the introductory text for message
+   // count quota on or off
+   // 1 = on, 0 (zero) = off
+   //
+   $show_quota_count_intro_text = 0;
+
+
+
+   // Turn the yellow alert login warning on or off
+   // 1 = on, 0 (zero) = off
+   //
+   $show_yellow_alert_MOTD_warning = 1;
+
+
+
+   // Turn the critical alert login warning on or off
+   // 1 = on, 0 (zero) = off
+   //
+   $show_critical_alert_MOTD_warning = 1;
+
+
+
+   // Override the introductory text.  Leave
+   // blank to use the default.  This only
+   // has an effect if $show_quota_intro_text
+   // is turned on.
+   //
+   //$intro_text = 'current usage:';
+   $intro_text = '';
+
+
+
+   // Override the introductory text for message
+   // count quota.  Leave blank to use the default.
+   // This only has an effect if $show_quota_count_intro_text
+   // is turned on.
+   //
+   //$intro_text_count = 'message usage:';
+   $intro_text_count = '';
+
+
+
+   // Specify an override for warning text to be 
+   // shown at login when quota is in "yellow alert" 
+   // status, or leave blank to use the default
+   // warning message.  This only has an effect 
+   // if $show_yellow_alert_MOTD_warning is turned
+   // on.
+   //
+   // The special string "###PERCENT_USED###" can
+   // be included, and will be replaced with the
+   // actual percent of the user's quota when displayed
+   //
+   // HTML is acceptble in this string
+   //
+   //$yellow_alert_quota_MOTD = '<strong>Warning:</strong> Your quota usage is currently ###PERCENT_USED###.  You may want to make sure you empty out your Trash and clean your Sent folder.';
+   $yellow_alert_quota_MOTD = '';
+
+
+
+   // Specify an override for warning text to be 
+   // shown at login when quota is in critical (red)
+   // status, or leave blank to use the default
+   // warning message.  This only has an effect 
+   // if $show_critical_alert_MOTD_warning is turned
+   // on.
+   //
+   // The special string "###PERCENT_USED###" can
+   // be included, and will be replaced with the
+   // actual percent of the user's quota when displayed
+   //
+   // HTML is acceptble in this string
+   //
+   //$critical_alert_quota_MOTD = '<strong>Warning:</strong> Your quota usage is currently ###PERCENT_USED###.  To avoid losing any email, you should immediately empty out your Trash and Sent folders and delete any emails with large attachments.';
+   $critical_alert_quota_MOTD = '';
+
+
+
+   // If your quotas are set based on Megabytes that
+   // are calculated as 1000KB, you should turn this
+   // on.  Otherwise, the more "correct" 1024KB value
+   // is used to calculate a Megabyte.
+   //
+   $use_1000KB_MB = 0;
+
+
+
+   // Turn on debugging to see quota output from server
+   //
+   $quota_usage_debug = 0;
+
+
+
+?>

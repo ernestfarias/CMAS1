@@ -1,0 +1,3 @@
+#!/bin/sh
+xgettext --keyword=_ -keyword=N_  --default-domain=newuser_wiz \
+    --no-location -C *.php --output=newuser_wiz.pot

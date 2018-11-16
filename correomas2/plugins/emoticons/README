@@ -1,0 +1,63 @@
+Emoticons plugin for SquirrelMail
+=====================================
+Ver 1.1, 04/03/03
+
+Original author: Pablo Macouzet Jr. <squirrelmail@kingnothing.com>
+
+
+Description
+===========
+
+This plugin displays a table of MSN Messenger emoticons 
+above the body of the compose screen and allows the 
+insertion of one or more emoticons into your message.
+
+The plugin utilizes the Enhanced Textarea and Browser Info
+plugins and only works on Internet Explorer 5.5+.  If other
+browsers such as Netscape, Mozilla, or Opera are used, the
+emoticons will not be shown.
+
+
+
+Requirements
+============
+
+This Plugin has only been tested with the following version
+of Squirrelmail:
+
+    - Squirrelmail Version: 1.4.0
+
+The Emoticons Plugin requires the installation of the following
+plugins before it will work properly:
+
+    - Enhanced Textarea v5.2
+    - Browser Info      v2.1
+
+
+Installation
+============
+
+THIS PLUGIN IS NOT INSTALLED IN THE NORMAL MANNER!!!! 
+PLEASE READ THE INSTALL FILE FOR INSTRUCTIONS
+
+This is due to the exact placement of the emoticons that is
+not addressed by the standard Squirrelmail plugin architecture.
+
+
+Change Log
+==========
+
+  1.1 - Pablo Macouzet Jr. <squirrelmail@kingnothing.com>
+        * Updated to work with Squirrelmail 1.4.0, Enhanced
+          Textarea 5.2, Browser Info 2.1
+
+  1.0 - Pablo Macouzet Jr. <squirrelmail@kingnothing.com>
+        * Initial release
+
+
+Credits
+=======
+
+Chris Franklin - Enhanced Textarea
+Chris Franklin - Browser Info
+Microsoft Corporation - MSN Messenger Emoticons

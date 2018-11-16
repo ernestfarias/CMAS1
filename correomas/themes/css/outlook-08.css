@@ -1,0 +1,82 @@
+body, td, th, dd, dt, h1, h2, h3, h4, h5, h6, p, ol, ul, li {
+  font-family: tahoma,sans-serif;
+  margin: 0;
+}
+body, small {
+  font-size: 8pt;
+}
+td, th {
+  font-size: 8pt;
+}
+textarea, pre {
+  font-family: monospace;
+  font-size: 8pt;
+}
+input {
+	font-family: tahoma,sans-serif;
+	font-size: 8pt;
+}
+
+textarea {
+	font-family: tahoma,sans-serif;
+	font-size: 8pt;
+}
+
+select {
+	font-family: tahoma,sans-serif;
+	font-size: 8pt;
+}
+.titulo_topo {
+	color: #FFFFFF;
+	font-family: Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+}
+.deleted {
+	text-decoration: line-through;
+}
+
+.unread_button {
+	font-family: tahoma;
+	font-size: 11px;
+	font-weight: normal;
+	text-decoration: none;
+	color: #000000;
+	border: 0px none;
+	background-image: url(/images/icons/not_read_header.gif);
+	background-repeat: no-repeat;
+	margin: 0px;
+	padding: 0px
+	border: 0px solid #9FA0FF;
+	background-color: transparent;
+}
+
+.read_button {
+	font-family: tahoma;
+	font-size: 11px;
+	font-weight: normal;
+	text-decoration: none;
+	color: #000000;
+	border: 0px none;
+	background-image: url(/images/icons/read_header.gif);
+	background-repeat: no-repeat;
+	margin: 0px;
+	padding: 0px
+	border: 0px solid #9FA0FF;
+	background-color: transparent;
+}
+
+.delete_button {
+	font-family: tahoma;
+	font-size: 11px;
+	font-weight: normal;
+	text-decoration: none;
+	Color: #000000;
+	border: 0px none;
+	background-image: url(/images/icons/delete_header.gif);
+	background-repeat: no-repeat;
+	margin: 0px;
+	padding: 0px
+	border: 0px solid #9FA0FF;
+	background-color: transparent;
+}

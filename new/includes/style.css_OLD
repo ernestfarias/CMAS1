@@ -1,0 +1,41 @@
+#ma big { vertical-align: top; font-weight:bold; font-size:14px}
+#footer td{color:#555555; font-size:11px; font-family:tahoma;}
+.header  {color:#AD5959; font-size:12px; font-family:arial; font-weight:bold}
+.header2  {color:#E5E3E3; font-size:11px; font-family:tahoma}
+.head a{color: #FFFFFF; font-size:10px; font-family:tahoma; font-weight:bold}
+#ba a{BACKGROUND: none; COLOR: #FFA200; FONT-SIZE: 11px; FONT-FAMILY: tahoma; TEXT-DECORATION: underline}
+#mon a{BACKGROUND: none; COLOR: #FFFFFF; FONT-SIZE: 11px; FONT-FAMILY: tahoma; TEXT-DECORATION: underline; font-weight:bold}
+.style1 {
+	color: #E0482F;
+	font-size: 13px;
+	font-family: tahoma;
+	font-weight:bold
+}
+.style2 {
+	color: #555555;
+	font-size: 10px;
+	font-family: tahoma
+}
+FONT		{FONT-FAMILY: tahoma; FONT-SIZE: 11px}
+TD		{FONT-FAMILY: tahoma}
+BODY		{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 11px; PADDING:0; MARGIN:0; background-color: #BAB4A4; margin-bottom:0px}
+P		{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 11px}
+DIV		{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 11px; padding-left:0px; padding-top:0px; padding-right:0px}
+INPUT		{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 11px}
+TEXTAREA	{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 11px}
+FORM 		{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 11px}
+A:link          {BACKGROUND: none; COLOR: #FFFFFF; FONT-SIZE: 11px; FONT-FAMILY: tahoma; TEXT-DECORATION: underline}
+A:active        {BACKGROUND: none; COLOR: #FFFFFF; FONT-SIZE: 11px; FONT-FAMILY: tahoma; TEXT-DECORATION: underline}
+A:visited       {BACKGROUND: none; COLOR: #FFFFFF; FONT-SIZE: 11px; FONT-FAMILY: tahoma; TEXT-DECORATION: underline}
+A:hover         {BACKGROUND: none; COLOR: #FFFFFF; FONT-SIZE: 11px; FONT-FAMILY: tahoma; TEXT-DECORATION: underline}
+.title 		{BACKGROUND: none; COLOR: #555555; FONT-SIZE: 13px; FONT-WEIGHT: bold; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+.content 	{BACKGROUND: none; COLOR: #555555; FONT-SIZE: 11px; FONT-FAMILY: Verdana, Helvetica}
+.storytitle 	{BACKGROUND: none; COLOR: #000000; FONT-SIZE: 14px; FONT-WEIGHT: bold; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+.storycat	{BACKGROUND: none; COLOR: #000000; FONT-SIZE: 13px; FONT-WEIGHT: bold; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: underline}
+.boxtitle 	{BACKGROUND: none; COLOR: #363636; FONT-SIZE: 11px; FONT-WEIGHT: bold; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+.boxcontent 	{BACKGROUND: none; COLOR: #555555; FONT-SIZE: 12px; FONT-FAMILY: Verdana, Helvetica}
+.option 	{BACKGROUND: none; COLOR: #555555;  FONT-SIZE: 13px; FONT-WEIGHT: bold; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+.tiny		{BACKGROUND: none; COLOR: #555555; FONT-SIZE: 10px; FONT-WEIGHT: normal; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+.footmsg        {BACKGROUND: none; COLOR: #FFFFFF; FONT-SIZE: 8px; FONT-WEIGHT: normal; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+.footmsg_l	{BACKGROUND: none; COLOR: #555555; FONT-SIZE: 8px; FONT-WEIGHT: normal; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: underline}
+.box		{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 11px; border: 1px solid #000000; background-color: #555555}

@@ -1,0 +1,18 @@
+Installing the New User Wizard plugin
+=================================
+
+1) Start with untaring the file into the plugins directory.
+   Here is an example using version 1.1 of the newuser-wiz plugin.
+
+  $ cd plugins
+  $ tar -xzvf newuser_wiz-<version>.tar.gz
+
+2) Then go to your SquirrelMail config directory and run conf.pl.  
+   Choose option 8 and move the plugin from the "Available Plugins"
+   category to the "Installed Plugins" category.  Save and exit.
+
+  $ cd /path/to/squirrelmail/config/
+  $ ./conf.pl
+
+3) Also, please verify that you have the "compatibility" plugin
+   installed.

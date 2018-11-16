@@ -1,0 +1,146 @@
+BODY {
+background-color: #ae5959;
+	SCROLLBAR-FACE-COLOR: ae5959;
+	SCROLLBAR-HIGHLIGHT-COLOR: #FFCC99;
+	SCROLLBAR-SHADOW-COLOR: #666666;
+	SCROLLBAR-3DLIGHT-COLOR: #996633;
+	SCROLLBAR-ARROW-COLOR: #FFFFFF;
+	SCROLLBAR-TRACK-COLOR: #FFCC99;
+	SCROLLBAR-DARKSHADOW-COLOR: #996633;
+	background-image: url(../images/bg.jpg);
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:8px ; color:#FFFFFF;
+ 
+}
+	a{color:#FFCC99;text-decoration:yes;font:bold} 
+	a:hover{color:#00CCFF}			
+	
+ 
+.Estilo15 {
+	color: #FFCC99;
+	font-size: 9px;
+}
+ 
+ .BlancoBold12 {
+	 
+	font-size: 12px;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+.BlancoBold14 {
+	 
+	font-size: 14px;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+.BlancoBold16 {
+	 
+	font-size: 16px;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+
+.BlancoBold10 {
+	 
+	font-size: 10px;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+
+.Blanco10 {
+	 
+	font-size: 10px;
+	color: #FFFFFF;
+ 
+}
+
+.Blanco12 {
+	font-size: 12px;
+	color: #FFFFFF;
+ 
+}
+
+.Blanco14 {
+	font-size: 14px;
+	color: #FFFFFF;
+ 
+}
+
+.Blanco16 {
+	font-size: 16px;
+	color: #FFFFFF;
+ 
+}
+
+
+.Negro14 {
+	 
+	font-size: 14px;
+	color: #000000;
+ 
+}
+.Negro10 {
+	 
+	font-size: 10px;
+	color: #000000;
+ 
+}
+
+.NegroBold14 {
+	 
+	font-size: 14px;
+	color: #000000;
+ font-weight: bold;
+}
+.NegroBold10 {
+	 
+	font-size: 10px;
+	color: #000000;
+ font-weight: bold;
+}
+
+.Naranja10 {
+	color: #FFCC99;
+	font-size: 10px;
+}
+ .Naranja14 {
+	color: #FFCC99;
+	font-size: 14px;
+}
+
+.TitulosTime
+{
+font-style: italic; 
+font-family: "Times New Roman";
+ font-size: 24px; 
+ color: #FFFFFF;
+ 
+ }
+ 
+.Negro14T {
+	font-family: Tahoma;
+	font-size: 14px;
+	color: #000000;
+ 
+}
+.Negro10T {
+	 	font-family: Tahoma;
+	font-size: 10px;
+	color: #000000;
+ 
+}
+
+ .Negro8T {
+	 	font-family: Tahoma;
+	font-size: 8px;
+	color: #000000;
+ 
+}
+
+.combo
+{
+	font-family:Verdana; 
+	font-size:10px; 
+	width:160px;
+	  
+}

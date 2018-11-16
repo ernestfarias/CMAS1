@@ -1,0 +1,242 @@
+This modification provides another visual indicator for message flags. 
+
+E.g. The standard Squirrelmail distribution indicates a new message by displaying 
+the header info in BOLD in the mailbox listing. With this modification, a graphic 
+envelope is placed in front of the message subject, a yellow envelope indicates a 
+new message, a white one indicates a previously read message. The following flags 
+are covered: new,read,reply,flagged,deleted,attachment.
+
+****************************
+NOTE
+****************************
+Starting with versions of this plugin that are applicable to SquirrelMail 1.4.1 and
+above, a patch file is included.  The best way to install this plugin is:
+
+  1) change into plugins directory
+      % cd plugins
+
+  2) untar the plugin 
+      % tar xzvf msg_flags-1.0.3.tar.gz
+
+  3) change into the main SquirrelMail directory and patch the source files:
+      % cd ..
+      % patch -p0 < plugins/msg_flags/msg_flags-squirrelmail-1.4.2.diff 
+
+Note that this plugin will be integrated into SquirrelMail starting with (approx)
+SquirrelMail 1.5.1.  
+
+Below is all still somewhat applicable, but was written for older versions of this
+plugin.
+
+=====================================================================================
+
+I included the modified mailbox_display.php and move_messages.php and left_main.php
+from Squirrelmail version 1.4.0 If you're using SM 1.4.0 then copy them to the right 
+dir and you're done :-)
+
+If you like to make the changes your self :-)
+Here is what needs to be changed:
+
+This plugin requires the following change to
+functions/mailbox_display.php:
+
+On line 223 replace case 5 with this: 
+
+            case 5: /* flags */
+                $stuff = false;
+                $td_str = "<b><small>";
+		
+                if (isset($msg['FLAG_FLAGGED']) && $msg['FLAG_FLAGGED'] == true) {
+                    $td_str .= _('<IMG SRC="../plugins/msg_flags/flagged.gif" border="0" height="10" width="10"> ');
+                }
+		if ($default_use_priority) {
+                    if ( ($msg['PRIORITY'] == 1) || ($msg['PRIORITY'] == 2) ) {
+                        $td_str .= '<IMG SRC="../plugins/msg_flags/prio_high.gif" border="0" height="10" width="5"> ';
+                    }
+                    else if ($msg['PRIORITY'] == 5) {
+                        $td_str .= '<IMG SRC="../plugins/msg_flags/prio_low.gif" border="0" height="10" width="5"> ';
+                    }
+		    else
+		    {
+			$td_str .= '<IMG SRC="../plugins/msg_flags/transparent.gif" border="0" width="5"> ';
+		    }
+                }
+		if ($msg['TYPE0'] == 'multipart') {
+                    $td_str .= '<IMG SRC="../plugins/msg_flags/attach.gif" border="0" height="10" width="6">';
+                }
+		else
+		{
+		    $td_str .= '<IMG SRC="../plugins/msg_flags/transparent.gif" border="0" width="6">';
+		}
+		
+		$msg_icon = '';
+		if (!isset($msg['FLAG_SEEN']) || ($msg['FLAG_SEEN']) == false) 
+		{
+    		    $msg_alt = '(New)';
+		    $msg_title = '(New)';
+    		    $msg_icon .= '../plugins/msg_flags/msg_new';
+		} 
+		else 
+		{
+		    $msg_alt = '(Read)';
+		    $msg_title = '(Read)';
+    		    $msg_icon .= "../plugins/msg_flags/msg_read";
+    		}
+		if (isset($msg['FLAG_DELETED']) && ($msg['FLAG_DELETED']) == true)
+		{
+		    $msg_icon .= '_deleted';
+		}
+		if (isset($msg['FLAG_ANSWERED']) && ($msg['FLAG_ANSWERED']) == true)
+		{
+		    $msg_icon .= '_reply';
+		}
+    		$td_str .= '<IMG SRC="' . $msg_icon . '.gif" border="0" alt="'. $msg_alt . '" title="' . $msg_title . '" height="12" width="18" ></small></b>';
+		
+                echo html_tag( 'td',
+                               $td_str,
+                               'right',
+                               $hlt_color,
+                               'nowrap' );
+                break;
+
+And on line 723 add the following:
+
+    echo getButton('SUBMIT', 'markFlagged',_("Flag"));
+    echo getButton('SUBMIT', 'markUnflagged',_("Unflag"));
+
+This plugin requires the following change to
+src/move_messages.php
+
+On line 146 add the following:
+
+sqgetGlobalVar('markFlagged',     $markFlagged,     SQ_POST); /* Added for Msg_Flags */
+sqgetGlobalVar('markUnflagged',   $markUnflagged,   SQ_POST); /* Added for Msg_Flags */
+
+On line 221 add the following:
+
+           } else if (isset($markFlagged)) {
+	      sqimap_toggle_flag($imapConnection, $id, '\\Flagged',true,true);
+           } else if (isset($markUnflagged)) {
+	      sqimap_toggle_flag($imapConnection, $id, '\\Flagged',false,true);
+
+This plugin requires the following change to
+src/left_main.php
+
+Replace the function on line 164 with this:
+
+function create_collapse_link($boxnum) {
+    global $boxes, $imapConnection, $unseen_notify, $color;
+    $mailbox = urlencode($boxes[$boxnum]['unformatted']);
+        
+    /* Create the link for this collapse link. */
+    $link = '<a target="left" style="text-decoration:none" ' .
+            'href="left_main.php?';
+    if ($boxes[$boxnum]['collapse'] == SM_BOX_COLLAPSED) {
+        $link .= "unfold=$mailbox\"><IMG src=\"../images/plus.gif\" border=\"0\" height=\"7\" width=\"7\">";
+    } else {
+        $link .= "fold=$mailbox\"><IMG src=\"../images/minus.gif\" border=\"0\"> height=\"7\" width=\"7\">";
+    }
+    $link .= '</a>';
+
+    /* Return the finished product. */
+    return ($link);
+}
+
+
+****************************
+
+To install the plugin:
+
+  1.  Change to the plugins directory.
+
+        $ cd plugins/
+
+  2.  Unarchive the plugin.
+
+        $ tar zxvf /your/path/to/msg_flags-x.x.tgz
+
+  2.  This should create a msg_flags/ directory under plugins.
+
+  3.  Copy the modified mailbox_display.php to the functions dir 
+      Copy move_messages.php and left_main.php to the src dir
+
+
+Possible enhancements:
+
+- You tell me :-)
+
+
+Any questions or problems, feel free to contact me:
+
+Forum:
+http://www.jaakke.com/index.php?mode=forum
+The look for "Projects" 
+
+E-mail:
+R. Jaakke
+Robert@jaakke.com
+
+Special Thanks to Emil Broekmeulen for helping me with some coding issues. 
+
+=======================
+Revision history
+=======================
+
+09/04/02 - ver 0.1
+- initial release
+
+02/05/02 - ver 0.2
+- Updated readme for SM 1.2.6
+- Added mailbox_display.php and move_messages.php for SM 1.2.6
+- Removed mailbox_display.php and move_messages.php for SM 1.2.5
+
+07/05/02 - ver 0.3
+- Moved the envelope icon to the flags cell instead of the subject line cell.
+- Aligned the flags cell LEFT
+- If a flag is not set a transparent image of the same width is placed instead to 
+  align the flags vertically.
+- Updated README -> Do it your self instructions.
+
+08/05/02 - ver 0.4
+- I had a bug reported and noticed that the case5 wasn't the same as included in SM 1.2.6
+  So i took the fresh mailbox_display.php and move_messages.php from the SM 1.2.6 src and 
+  modified these, so hopefully no more bugs now.
+- Replaced the + and - in the folder list with images.
+- Modified the envelope images. They now have the same width for better vertical alignment.
+ 
+08/05/02 - ver 0.5
+- Folder collapse wouldn't work after installing msg_flags 0.4, sorry for that, this version fixes it.
+
+14/06/02 - ver 0.6
+- After 1816 downloads someone noticed that the priority images were wrong.
+  High prio was shown with a low prio image and low prio with the high prio image.
+  Anyway this is what's fixed in this verion. If you are upgrading from ver 0.5 
+  you can simply copy the mailbox_display.php from the archive since the rest is still the same.
+  
+26/06/02 - ver 0.7
+- I updated the plugin to work with SM 1.2.7.
+  First off all, my desktop died :-( so i had to work on my server and that delayed
+  the work on Msg_Flags. But here it is :-)
+- If you're using SM 1.2.6 there is no reason to upgrade this plugin since it's the same
+  except the code might be a little different.
+- The SM 1.2.7 tarball has the + and - images included in the image dir. This version of the 
+  plugin uses them. If they're missing for some reason then copy the + and - img from the 
+  Msg_flags dir to the SM image dir.
+
+17/09/02 - ver 0.8
+- I updated the plugin to work with SM 1.2.8 and it works with the register_globals set to off.
+- Note! If you're using a version before SM 1.2.8 there is no reason to upgrade this plugin.
+
+20/03/03 - ver 0.9
+- I finally updated the plugin to work with SM 1.4.0rc2a :-)
+- Removed the setup.php and moved the code into move_messages.php.
+- Sorry for not updating for a long time. I was very busy with school but i finally got my Bachalor's Degree :-)
+
+07/03/03 - ver 1.0
+- Updated the plugin for SM 1.4 stable.
+- New Images! Thnx to Joris Bruring. The old (smaller size) images are also included.
+- Thnx to Paul Kremer for sending me de modified files for 1.4 stable. Saved me some time :-)
+
+07/03/03 - ver 1.0.1
+- Reduced the image size a little, they have a fixed width and height now which should improve speed a little
+  when loading the page.

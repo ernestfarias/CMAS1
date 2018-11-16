@@ -1,0 +1,14 @@
+*****************************************
+* Forced Preferences plugin Release Notes
+*  version 1.1
+*****************************************
+This plugin version adds new configuration option ($fp_disabled_hooks)
+and tries to hide enforced options from end user. Configuration file
+from previous version should work with this version.
+
+Known issues:
+* Option groups that contain only hidden options are not removed.
+Title line is still visible and empty line before next group is
+added.
+* Interface still can be abused by end user, that knows internals
+of squirrelmail and can control form input data.

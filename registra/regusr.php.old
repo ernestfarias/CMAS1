@@ -1,0 +1,222 @@
+<? 
+
+ session_start();
+ require_once('../includes/date.php'); 
+ $msgnewusr = "no";
+ if($_SESSION["bannertop"] && !empty($_SESSION["bannertop"])) 
+		{ 
+		$banner =$_SESSION["bannertop"]; 
+		} else {
+		$banner= "banners/topcarnes.gif";
+		}
+		
+ if(isset($_POST["txtregemail"]) && !empty($_POST["txtregemail"]))
+	{
+		$nombre = addslashes($_POST["txtregapellido"]). " " .addslashes($_POST["txtregnombre"]);;
+
+	$email = addslashes($_POST["txtregemail"]);
+
+		$telefono = addslashes($_POST["txtregtelefono"]);
+			$barrio = addslashes($_POST["txtregbarrio"]);
+				$fecnac = addslashes($_POST["txtregfecnac"]);
+					$como = addslashes($_POST["txtregcomo"]);
+
+if (getenv("HTTP_X_FORWARDED_FOR")) {
+    	 $ipaddress   = getenv("HTTP_X_FORWARDED_FOR");
+	   } else {
+	     $ipaddress   = getenv("REMOTE_ADDR");
+	  } 
+
+
+
+     	  $cliente = getenv("HTTP_USER_AGENT");
+ 
+if(isset($_SERVER["HTTP_REFERER"]) &&  !empty($_SERVER["HTTP_REFERER"])) {
+	$referer = $_SERVER["HTTP_REFERER"];  
+	} else {
+	$referer = "http://www.comermas.com.ar";
+	}
+
+
+	   	$fecha = datear("m/d/Y"); 	
+		$hora = datear("H:i:s"); 	
+
+ require_once('../includes/catalog.php'); 
+$sql = "INSERT INTO usuariosupg(nombre,email,telefono,barrio,fecnac,como,ipaddress,cliente,fecha,hora,referer)values('$nombre','$email','$telefono','$barrio','$fecnac','$como','$ipaddress','$cliente','$fecha','$hora','$referer')";
+mysql_query($sql) or die (mysql_error()); 
+ 
+$msgnewusr = "si";
+ }
+
+?>
+
+
+<html>
+<head>
+<META name="keywords" content="comidas,lugares para comer, tenedor libre, empanadas, cenas, pizza, restaurant,guia de buenos aires, pastas, delivery, almuerzo, parrila, comida arabe, comida oriental, discos, resto bares, shows, restaurants">
+<meta name="description" content="comidas,lugares para comer, tenedor libre, empanadas, cenas, pizza, restaurant,guia de buenos aires, pastas, delivery, almuerzo, parrila, comida arabe, comida oriental, discos, resto bares, shows, restaurants">
+<meta http-equiv="description" content= "comidas,lugares para comer, tenedor libre, empanadas, cenas, pizza, restaurant,guia de buenos aires, pastas, delivery, almuerzo, parrila, comida arabe, comida oriental, discos, resto bares, shows, restaurants">
+<meta http-equiv="keywords" content="comidas,lugares para comer, tenedor libre, empanadas, cenas, pizza, restaurant,guia de buenos aires, pastas, delivery, almuerzo, parrila, comida arabe, comida oriental, discos, resto bares, shows, restaurants">
+<meta name="robots" content="all|index|follow">
+<META name="Author" content="Farias Ernesto, Cristian Magnone">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<title>ComerMas.com.ar - Lugares para comer - Tenedor libre - Restaurants - Bares - Tenedores libres - Parrilas - Pizzerias - Comida Arabe - Comida Oriental - Discos - Shows - Panaderia - Cafes</title>
+<LINK href= "../includes/comermas.css" type=text/css rel=stylesheet>
+<SCRIPT language=javascript src="../includes/functions.js"></SCRIPT> 
+</head>
+
+<body bgcolor="AE5959" leftmargin="0" topmargin="0">
+<table width="779" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+  <tr> 
+    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td height="1"><img src="../marcos/blanco/blanco.gif" width="1" height="1"></td>
+        </tr>
+        <tr> 
+          <td width="779" height="90"><table width="777" border="0" align="center" cellpadding="0" cellspacing="0">
+              <tr>
+                <td height="90" background="../<?=$banner ?>" bgcolor="ae5959"></td>
+              </tr>
+              <tr>
+                <td width="777" bgcolor="#FFFFFF"><img src="../marcos/blanco/blanco.gif" width="1" height="1"></td>
+              </tr>
+            </table></td>
+        </tr>
+      </table>
+      <table width="777" height="19" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="AE5959">
+        <tr> 
+          <td width="20">&nbsp;</td>
+          <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td><div align="right"> 
+                  <button style="font-size:8pt;cursor:pointer;margin:0px;padding:0px;border:0;background-color:#851549" onClick="history.back()"><font color="#FFFFFF"><strong>Volver</strong></button>
+              </div></td>
+            </tr>
+            <tr>
+              <td><img src="../botones/blancogris.gif" width="100%" height="2"></td>
+            </tr>
+            <tr>
+              <td height="1"></td>
+            </tr>
+          </table>            
+            <? if ($msgnewusr == "si") {?>
+              <form name="frmaddusr" action="regusr.asp" method="post">
+		
+			<table width="365" height="250" border="0" align="center" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td height="21" colspan="2" align="center">
+                    <CENTER>
+                      <span class="Blanco16">Gracias por registrarse en </span><span class="TitulosTime"><br>
+                      ComerMas</span><span class="Blanco16"><br>
+                      <br>
+                      </span><span class="Blanco12">Pronto conocera los beneficios de estar registrado. </span><br>
+                      <span class="Estilo15"><br>
+                      <a href="http://www.comermas.com.ar" class="Naranja10">Volver a Pagina principal</a> </span><br>
+                  
+                  </center></td>
+                </tr>
+              </table>    
+			</form>   
+			<? } 
+			
+			if ($msgnewusr == "no") 
+			{?>
+ 
+			
+   <form action="regusr.php" method="post" name="frmaddusr" class="BlancoBold14">
+			
+			     
+		      <table width="365" height="250" border="0" align="center" cellpadding="0" cellspacing="0">         
+                <tr bgcolor="#851549">
+                  <td height="24" colspan="2"><div align="right">
+                      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                          <td width="93%"><div align="right" class="BlancoBold12"> REGISTRARSE EN COMERMAS  </div></td>
+                          <td width="15"> </td>
+                        </tr>
+                      </table>
+											
+                      </div></td>
+                </tr>
+                <tr>
+                  <td colspan="2" height="2" valign="top" align="center"><img src="../botones/blancogris.gif" width="100%" height="2"></td>
+                </tr>
+                <tr class="Blanco12">
+                  <td bgcolor="#B36464"><div align="right">Nombre: </div></td>
+                  <td bgcolor="#B36464"> 
+                    <input type="text" name="txtregnombre" style="width:130px;font-size:8pt">
+             </td>
+                <tr class="Blanco12">
+                  <td><div align="right"> Apellido: </div></td>
+                  <td>  
+                    <input type="text" name="txtregapellido" style="width:130px;font-size:8pt">
+              </td>
+                </tr>
+                <tr class="Blanco12">
+                  <td bgcolor="#B36464"><div align="right">E-mail:</div></td>
+                  <td bgcolor="#B36464"> 
+                    <input type="text" name="txtregemail" style="width:130px;font-size:8pt">
+                  </td>
+                </tr>
+                <tr class="Blanco12">
+                  <td><div align="right">Telefono:</div></td>
+                  <td> 
+                    <input type="text" name="txtregtelefono" style="width:130px;font-size:8pt;z-Index:8">
+        </td>
+                </tr>
+                <tr class="Blanco12">
+                  <td height="50" bgcolor="#B36464"><div align="right">Ciudad/Barrio:</div></td>
+                  <td bgcolor="#B36464"> 
+                    <input type="text" name="txtregbarrio" style="width:130px;font-size:8pt">
+                  </td>
+                </tr>
+                <tr class="Blanco12">
+                  <td><div align="right">Fecha de Nacimiento:</div></td>
+                  <td> 
+                    <input type="text" name="txtregfecnac" style="width:130px;font-size:8pt">
+        </td>
+                </tr>
+                <tr class="Blanco12">
+                  <td bgcolor="#B36464"><div align="right">Como nos conocio?:</div></td>
+                  <td bgcolor="#B36464"> 
+                    <input type="text" name="txtregcomo" style="width:130px;font-size:8pt">
+                  </td>
+                </tr>
+                <tr>
+                  <td height="3" colspan="2"><img src="../botones/blancogris.gif" width="100%" height="2"></td>
+                </tr>
+                <tr>
+                  <td height="21" colspan="2" align="center">                    <div align="right">
+                      <input name="submit" type="submit" style="font-size:8pt;color:white;cursor:pointer;margin:0px;padding:0px;border:0;background-color:#851549"  value="Aceptar">
+                      </div></td>
+                </tr>
+                <tr>
+                  <td height="15" width="157"></td>
+                  <td height="15" width="208"></td>
+                </tr>
+          </table>
+			</form>
+		  <? } ?>
+            <div align="right"><br>
+              <br> 
+            <img src="../banners/logo.gif" width="352" height="86">  </div>
+          <div align="center"></div></td>
+          <td width="20" height="19" align="right"></td>
+        </tr>
+      </table>
+      <table width="100%" height="64" border="0" cellpadding="0" cellspacing="0">
+        <tr> 
+          <td height="2"><img src="../marcos/blanco/blanco.gif" width="1" height="1"></td>
+        </tr>
+        <tr>
+          <td height="24"><? require_once('../includes/bot.php')?></td>
+        </tr>
+        <tr> 
+          <td height="1"><img src="../marcos/blanco/blanco.gif" width="1" height="1"></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,30 @@
+body,p { 
+     font-family: Verdana,Geneva,Arial,Helvetica, sans-serif; 
+    font-size: 11px; 
+	 color: #FFFFFF; 
+}  
+
+body { 
+     font-family: Verdana,Geneva,Arial,Helvetica, sans-serif; 
+    font-size: 11px; 
+	 color: #FFFFFF; 
+}  
+a { 
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+    font-size: 11px; 
+    color: #00FF00; 
+    text-decoration: none; 
+    background : transparent; 
+} 
+a:active { 
+    font-family: Verdana,Geneva,Arial,Helvetica, sans-serif; 
+    text-decoration: underline; 
+} 
+a:hover { 
+    font-family: Verdana,Geneva,Arial,Helvetica, sans-serif; 
+    color: #FFFF00; 
+    text-decoration: underline; 
+} 
+a.small { 
+    font-size: 10px; 
+} 

@@ -1,0 +1,15 @@
+Newuser-Wiz Plugin
+by Matt Sturtz <squirrelmail@matthouse.com>
+modifications by David Minor <dave@dminor.com>
+Angelo Bertolli <angelo.bertolli@gmail.com>
+v1.3.2 (c) 2002-2005 (GNU GPL - see ../../COPYING)
+
+This plugin prompts new users to enter their full name and email address.
+
+I'm tired of telling people the same speach, which usually goes something like
+"Once you get logged in, click 'options' and 'Personal Information', and set
+your full name and email address.  No, you don't need to worry about anything
+else on that page.  OK, now change your password."
+
+This plugin is the solution.  I hope it works for you.
+

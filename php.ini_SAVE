@@ -1,0 +1,37 @@
+register_globals =off
+disable_functions = system, shell, exec, system_exec, shell_exec, mysql_pconnect, passthru, popen, proc_open, proc_close, proc_nice, proc_terminate, proc_get_status, escapeshellarg, escapeshellcmd
+sendmail_path = /opt/exim/bin/exim -t
+error_reporting = E_ALL & ~E_NOTICE
+upload_max_filesize = 8M
+open_basedir="/home/rm000120/public_html:/tmp:/opt/apache/lib/php"
+output_buffering = ON
+
+[Session]
+session.save_handler=files   ; handler used to store/retrieve data
+session.save_path = "/home/rm000120/tmp/sessiondata"; argument passed to save_handler
+;save_handler
+session.use_cookies=1      ; whether to use cookies
+session.name=PHPSESSID  
+session.auto_start=0       ; initialize session on request startup
+session.cookie_lifetime=0       ; lifetime in seconds of cookie
+session.cookie_path=/       ; the path the cookie is valid for
+session.cookie_domain=; the domain the cookie is valid for
+session.serialize_handler=php     ; handler used to serialize data
+session.gc_probability=1       ; percentual probability that the 
+session.gc_maxlifetime=1440    ; after this number of seconds, stored
+session.referer_check=; check HTTP Referer to invalidate 
+session.entropy_length=0       ; how many bytes to read from the file
+session.entropy_file=; specified here to create the session id
+session.cache_limiter=; set to {nocache,private,public} to
+session.cache_expire=180     ; document expires after n minutes
+;session.use_trans_sid=1       ; use transient sid support if enabled
+ 
+url_rewriter.tags="a=href,area=href,frame=src,input=src,form=fakeentry" 
+
+[Zend]
+zend_optimizer.optimization_level=15
+zend_extension_manager.optimizer=/opt/Zend/lib/Optimizer-2.5.7
+zend_extension_manager.optimizer_ts=/opt/Zend/lib/Optimizer_TS-2.5.7
+zend_extension=/opt/ioncube/ioncube_loader_lin_4.3.so
+zend_extension=/opt/Zend/lib/ZendExtensionManager.so
+zend_extension_ts=/opt/Zend/lib/ZendExtensionManager_TS.so

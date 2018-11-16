@@ -1,0 +1,63 @@
+BODY	{FONT-FAMILY: tahoma; FONT-SIZE: 10px; PADDING:0; MARGIN:0; background-color: #BAB4A4; margin-bottom:0px} 
+A:link          {BACKGROUND: none; FONT-FAMILY: tahoma; TEXT-DECORATION: none; FONT-SIZE: 11px}
+A:active        {BACKGROUND: none;  FONT-FAMILY: tahoma; TEXT-DECORATION: none; FONT-SIZE: 11px}
+A:visited       {BACKGROUND: none; FONT-FAMILY: tahoma; TEXT-DECORATION: none; FONT-SIZE: 11px}
+A:hover         {BACKGROUND: none; FONT-FAMILY: tahoma; TEXT-DECORATION: none; FONT-SIZE: 11px}
+P		{FONT-FAMILY: tahoma; FONT-SIZE: 11px; }
+ 
+.bot  {color:#FFFFFF; font-size:11px; font-family:tahoma}
+
+.style3 {
+	color: #AE5959;
+	font-size: 13px;
+	font-family: tahoma;
+	font-weight:bold
+}
+.style4 {
+	color: #FFFFFF;
+	font-size: 13px;
+	font-family: tahoma;
+	font-weight:bold
+}
+
+.Titulos {
+	color: #000000;
+	font-size: 13px;
+	font-family: tahoma;
+	font-weight:bold
+}
+.Textos {
+	color: #555555;
+	font-size: 12px;
+	font-family: tahoma
+}
+
+.Textos10px {
+	color: #555555;
+	font-size: 10px;
+	font-family: tahoma
+}
+
+.encabezados {
+	font-family: Tahoma;
+	font-size: 10px;
+	font-style: normal;
+	color: #FFFFFF;
+}
+
+.catalogo {
+	color: #555555;
+	font-size: 10px;
+	font-family: tahoma
+}
+
+.combo
+{
+	font-family:Verdana; 
+	font-size:10px; 
+	width:160px;
+	  
+}
+
+
+ 

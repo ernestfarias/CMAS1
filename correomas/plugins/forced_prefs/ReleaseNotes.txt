@@ -1,0 +1,22 @@
+*****************************************
+* Forced Preferences plugin Release Notes
+*  version 1.2
+*****************************************
+This plugin version adds new configuration options ($fp_removed_optpage_urls 
+and $fp_debug) that can be used to hide standard option blocks from end user.
+and display debug information about processed data. This plugin version also 
+allows to control advanced_settings plugin widgets. Configuration files
+from previous versions should work with this version, but features provided 
+by new configuration options won't be used.
+
+Known issues:
+* Option groups that contain only hidden options are not removed.
+Title line is still visible and empty line before next group is
+added.
+* Interface still can be abused by end user, that knows internals
+of SquirrelMail and can control form input data.
+* Option pages still can be accessed by end user.
+
+If you want total control, customize your SquirrelMail install and remove 
+unwanted files and options. forced_prefs plugin provides only hacks that allow
+hiding features from unexperienced end user.

@@ -1,0 +1,55 @@
+Installing the Emoticons Plugin
+===================================
+
+This Plugin has only been tested with the following version
+of Squirrelmail:
+
+    - Squirrelmail Version: 1.4.0
+
+
+This plugin has the following requirements. Please make sure you
+have the following plugins installed before continuing:
+
+    - Enhanced Textarea v5.2
+    - Browser Info      v2.1
+
+
+1) Unzip the file into the plugins directory.
+
+2) You do *NOT* need to enable this plugin using conf.pl, since
+   it does not use the standard plugin architecture. The Emoticons
+   Plugin involves adding a single line to /src/compose.php. However, 
+   if you use the Plugin Updates plugin, you do need to enable this 
+   plugin in order to see it on the Plugin Updates page:
+
+3) Backup your current squirrelmail/src/compose.php (the one already
+   modified by the Enhanced Textarea plugin).
+
+4) Look for the following line in the /src/compose.php file:
+
+
+
+        if ($location_of_buttons == 'between') {
+        showComposeButtonRow();
+    }
+
+
+   ******** ADD THE FOLLOWING IMMEDIATELY BELOW THE CODE ABOVE ****
+
+
+// **************** EMOTICONS ********************
+include '../plugins/emoticons/insert.php';
+// **************** EMOTICONS ********************
+
+
+5) 
+
+   ---------- optional ----------
+
+   Go to your config directory and run conf.pl.  Choose option
+   8 and add the compatibility plugin.  Save and exit.
+
+      $ cd ../../config
+      $ ./conf.pl
+
+   ---------- optional ----------

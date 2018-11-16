@@ -1,0 +1,142 @@
+Compatibility plugin for SquirrelMail
+=====================================
+Ver 1.2, 01/04/03
+
+Original author: Paul Lesneiwski <pdontthink@angrynerds.com>
+Original idea: Bruce Richardson <itsbruce@uklinux.net>
+
+
+
+Description
+===========
+
+This plugin allows any other plugin access to the functions
+needed to make it backward (& forward) compatible with most
+versions of SM in wide use.  This eliminates the need for
+duplication of certain functions throughout many plugins.
+
+
+
+Usage (Plugin Authors' Guide)
+=============================
+
+Currently, some of the functions that may or may not be available 
+to you when coding a plugin targeted at as wide a SquirrelMail 
+user base as possible include:
+
+   check_sm_version();
+   check_php_version();
+   sqsession_register();
+   sqsession_unregister();
+   sqsession_is_registered();
+   sqsession_is_active();
+   sqgetGlobalVar();  (previously known as sqextractGlobalVar();)
+
+This plugin provides backups for those functions, so you may
+always assume that they are available.  In order to make use
+of them, you must change you function calls as such:
+
+   compatibility_check_sm_version();
+   compatibility_check_php_version();
+   compatibility_sqsession_register();
+   compatibility_sqsession_unregister();
+   compatibility_sqsession_is_registered();
+   compatibility_sqsession_is_active();
+   compatibility_sqextractGlobalVar();)
+
+You must also make sure to include this plugin's functions.php
+file as below:
+
+   <?php
+
+      // include compatibility plugin
+      //
+      if (defined('SM_PATH'))
+         include_once(SM_PATH . 'plugins/compatibility/functions.php');
+      else if (file_exists('../plugins/compatibility/functions.php'))
+         include_once('../plugins/compatibility/functions.php');
+      else if (file_exists('./plugins/compatibility/functions.php'))
+         include_once('./plugins/compatibility/functions.php');
+
+
+      function pluginname_compose_bottom_do()
+      {
+
+
+         // your code here
+
+
+         // example of how to get a variable POSTed to this
+         // last page request or retrieve a variable from
+         // the current session
+         // 
+         global $myvar;
+         compatibility_sqextractGlobalVar('myvar');
+
+
+         // example of how to include another file
+         //
+         if (compatibility_check_sm_version(1, 3))
+            include_once (SM_PATH . 'plugins/pluginname/config.php');
+         else
+            include_once ('../plugins/pluginname/config.php');
+
+
+         // example of how to register a variable
+         // in the current session 
+         //
+         $myothervar = 'some_value';
+         compatibility_sqsession_register($myothervar, 'myothervar');
+
+
+      }
+
+   ?>
+
+
+Although not directly related to this plugin, note that the 
+advised format of a plugin's setup.php should be:
+
+   <?php
+          function squirrelmail_plugin_init_pluginname()
+          {
+             global $squirrelmail_plugin_hooks;
+
+             $squirrelmail_plugin_hooks['compose_bottom']['pluginname']
+                = 'pluginname_compose_bottom';
+          }
+
+          function pluginname_compose_bottom()
+          {
+             if (defined('SM_PATH'))
+                include_once(SM_PATH . 'plugins/pluginname/functions.php');
+             else
+                include_once('../plugins/pluginname/functions.php');
+          
+             pluginname_compose_bottom_do();
+          }
+   ?>
+
+The goal is to keep setup.php as brief as possible.  This also
+allows you to break up your code into logical chunks.  
+
+
+
+Change Log
+==========
+
+  1.2 - Paul Lesneiwski <pdontthink@angrynersd.com>
+   * Fix for theme problem with plugins under SM 1.4
+
+  1.1 - Paul Lesneiwski <pdontthink@angrynersd.com>
+   * Some applications of this plugin were experiencing
+     unusual include order, so added includes of the
+     global.php and strings.php files to be safe.
+   * Even though older versions of SquirrelMail have
+     some of the functions that this plugin duplicates,
+     because they have session issues, the compatibility
+     version of those functions now takes precedence over
+     older SquirrelMail core code.
+
+  1.0 - Paul Lesneiwski <pdontthink@angrynersd.com>
+   * Initial release

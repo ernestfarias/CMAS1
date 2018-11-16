@@ -1,0 +1,130 @@
+--- ../functions/mailbox_display.php.orig	Thu Jun 26 00:30:26 2003
++++ ../functions/mailbox_display.php	Thu Jun 26 01:15:16 2003
+@@ -232,36 +232,57 @@
+                 $stuff = false;
+                 $td_str = "<b><small>";
+ 
+-                if (isset($msg['FLAG_ANSWERED']) && $msg['FLAG_ANSWERED'] == true) {
+-                    $td_str .= _("A");
+-                    $stuff = true;
+-                }
+-                if ($msg['TYPE0'] == 'multipart') {
+-                    $td_str .= '+';
+-                    $stuff = true;
++                if (isset($msg['FLAG_FLAGGED']) && $msg['FLAG_FLAGGED'] == true) {
++                    $td_str .= _('<IMG SRC="../plugins/msg_flags/flagged.gif" border="0" height="10" width="10"> ');
+                 }
+                 if ($default_use_priority) {
+                     if ( ($msg['PRIORITY'] == 1) || ($msg['PRIORITY'] == 2) ) {
+-                        $td_str .= "<font color=\"$color[1]\">!</font>";
+-                        $stuff = true;
++                        $td_str .= '<IMG SRC="../plugins/msg_flags/prio_high.gif" border="0" height="10" width="5"> ';
++                    }
++                    else if ($msg['PRIORITY'] == 5) {
++                        $td_str .= '<IMG SRC="../plugins/msg_flags/prio_low.gif" border="0" height="10" width="5"> ';
+                     }
+-                    if ($msg['PRIORITY'] == 5) {
+-                        $td_str .= "<font color=\"$color[8]\">?</font>";
+-                        $stuff = true;
++                    else
++                    {
++                        $td_str .= '<IMG SRC="../plugins/msg_flags/transparent.gif" border="0" width="5"> ';
+                     }
+                 }
+-                if (isset($msg['FLAG_DELETED']) && $msg['FLAG_DELETED'] == true) {
+-                    $td_str .= "<font color=\"$color[1]\">D</font>";
+-                    $stuff = true;
++                if ($msg['TYPE0'] == 'multipart') {
++                    $td_str .= '<IMG SRC="../plugins/msg_flags/attach.gif" border="0" height="10" width="6">';
++                }
++                else
++                {
++                    $td_str .= '<IMG SRC="../plugins/msg_flags/transparent.gif" border="0" width="6">';
+                 }
+-                if (!$stuff) {
+-                    $td_str .= '&nbsp;';
++
++                $msg_icon = '';
++                if (!isset($msg['FLAG_SEEN']) || ($msg['FLAG_SEEN']) == false)
++                {
++                    $msg_alt = '(New)';
++                    $msg_title = '(New)';
++                    $msg_icon .= '../plugins/msg_flags/msg_new';
+                 }
++                else
++                {
++                    $msg_alt = '(Read)';
++                    $msg_title = '(Read)';
++                    $msg_icon .= "../plugins/msg_flags/msg_read";
++                }
++                if (isset($msg['FLAG_DELETED']) && ($msg['FLAG_DELETED']) == true)
++                {
++                    $msg_icon .= '_deleted';
++                }
++                if (isset($msg['FLAG_ANSWERED']) && ($msg['FLAG_ANSWERED']) == true)
++                {
++                    $msg_icon .= '_reply';
++                }
++                $td_str .= '<IMG SRC="' . $msg_icon . '.gif" border="0" alt="'. $msg_alt . '" title="' . $msg_title . '" height="12" width="18" >';
+                 do_hook("msg_envelope");
+                 $td_str .= '</small></b>';
++
+                 echo html_tag( 'td',
+                                $td_str,
+-                               'center',
++                               'right',
+                                $hlt_color,
+                                'nowrap' );
+                 break;
+@@ -709,6 +730,8 @@
+              .'&nbsp;' . _("mailbox") . "\n";
+     }
+ 
++    echo getButton('SUBMIT', 'markFlagged',_("Flag"));
++    echo getButton('SUBMIT', 'markUnflagged',_("Unflag"));
+     echo getButton('SUBMIT', 'markRead',_("Read"));
+     echo getButton('SUBMIT', 'markUnread',_("Unread"));
+     echo getButton('SUBMIT', 'delete',_("Delete")) ."&nbsp;\n";
+--- ../src/move_messages.php.orig	Thu Jun 26 00:33:35 2003
++++ ../src/move_messages.php	Thu Jun 26 00:34:26 2003
+@@ -143,6 +143,9 @@
+ sqgetGlobalVar('attache',         $attache,         SQ_POST);
+ sqgetGlobalVar('location',        $location,        SQ_POST);
+ 
++sqgetGlobalVar('markFlagged',     $markFlagged,     SQ_POST); /* Added for Msg_Flags */
++sqgetGlobalVar('markUnflagged',   $markUnflagged,   SQ_POST); /* Added for Msg_Flags */
++
+ /* end of get globals */
+ 
+ $imapConnection = sqimap_login($username, $key, $imapServerAddress, $imapPort, 0);
+@@ -215,6 +218,10 @@
+ 	      sqimap_toggle_flag($imapConnection, $id, '\\Seen',true,true);
+            } else if (isset($markUnread)) {
+ 	      sqimap_toggle_flag($imapConnection, $id, '\\Seen',false,true);
++           } else if (isset($markFlagged)) {
++              sqimap_toggle_flag($imapConnection, $id, '\\Flagged',true,true);
++           } else if (isset($markUnflagged)) {
++              sqimap_toggle_flag($imapConnection, $id, '\\Flagged',false,true);
+            } else  {
+ 	      sqimap_msgs_list_delete($imapConnection, $mailbox, $id);
+               if ($auto_expunge) {
+--- ../src/left_main.php.orig	Thu Jun 26 00:34:34 2003
++++ ../src/left_main.php	Thu Jun 26 00:38:46 2003
+@@ -164,14 +164,14 @@
+ function create_collapse_link($boxnum) {
+     global $boxes, $imapConnection, $unseen_notify, $color;
+     $mailbox = urlencode($boxes[$boxnum]['unformatted']);
+-        
++
+     /* Create the link for this collapse link. */
+     $link = '<a target="left" style="text-decoration:none" ' .
+             'href="left_main.php?';
+     if ($boxes[$boxnum]['collapse'] == SM_BOX_COLLAPSED) {
+-        $link .= "unfold=$mailbox\">+";
++        $link .= "unfold=$mailbox\"><IMG src=\"../images/plus.gif\" border=\"0\" height=\"7\" width=\"7\">";
+     } else {
+-        $link .= "fold=$mailbox\">-";
++        $link .= "fold=$mailbox\"><IMG src=\"../images/minus.gif\" border=\"0\" height=\"7\" width=\"7\">";
+     }
+     $link .= '</a>';
+ 

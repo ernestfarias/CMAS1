@@ -1,0 +1,60 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-10-16 16:32-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../functions.php:15 ../../../notes.php:32 ../../../notes.php:115
+#: ../../../notes.php:151
+msgid "Notes"
+msgstr "Notas"
+
+#: ../../../notes.class.php:82
+msgid "Return"
+msgstr "Retornar"
+
+#: ../../../notes.class.php:93
+msgid "Note exceeds the maximum note size!"
+msgstr "Nota excede o tamanho maximo permitido"
+
+#: ../../../notes.class.php:107 ../../../notes.class.php:153
+#: ../../../notes.php:138
+msgid "Add a Note"
+msgstr "Adicionar uma nota"
+
+#: ../../../notes.class.php:239 ../../../notes.class.php:241
+#: ../../../notes.php:130 ../../../notes.php:176
+msgid "Save"
+msgstr "Salvar"
+
+#: ../../../notes.class.php:243
+msgid "Edit"
+msgstr "Editar"
+
+#: ../../../notes.php:33
+msgid "does not exist!"
+msgstr "Nao existe"
+
+#: ../../../notes.php:107 ../../../notes.php:124
+msgid "Yes"
+msgstr "Sim"
+
+#: ../../../notes.php:111 ../../../notes.php:124
+msgid "No"
+msgstr "Nao"
+
+#: ../../../notes.php:119
+msgid "Are you sure you want to delete the note entitled"
+msgstr "Deseja excluir esta nota"

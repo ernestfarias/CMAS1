@@ -1,0 +1,3 @@
+#!/bin/sh
+xgettext --keyword=_ -keyword=N_  --default-domain=quota_usage \
+    --no-location -C *.php --output=quota_usage.pot

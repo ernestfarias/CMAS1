@@ -1,0 +1,70 @@
+------
+forced_prefs - Forced Preferences plugin
+------
+
+This plugin allows setting default SquirrelMail options for existing
+SquirrelMail users.
+
+***
+* Changelog
+***
+2006-04-18
+ - Added regular expression support to $fp_removed_optpage_urls.
+ - Removed global calls from configuration files.
+ - Released 1.2 version.
+
+2006-04-16
+ - Added advanced_settings plugin hook.
+ - Added debuging calls in option filtering.
+
+2005-07-26
+ - Fixed use of SM_PATH in setup.php.
+
+2005-04-14
+ - Implemented $optpage_blocks filtering. Added $fp_removed_optpage_urls
+   and $fp_debug configuration options.
+
+2005-02-04
+ - Some documentation fixes.
+ - Released 1.1 version.
+
+2005-01-25
+ - Added functions that remove empty optpage_data groups.
+ - Released unofficial 1.1rc1 version for testing.
+
+2005-01-20
+ - Added option to disable plugin hooks.
+
+2005-01-18
+ - Added ability to remove settings from option pages. Currently works
+   only for $optpage_data array. Requires squirrelmail v.1.2.0+ and
+   php 4.0.6+.
+ - Converted require_once to include_once.
+
+2004-02-15
+ - initial release
+
+***
+* Internals
+***
+Forced Preferences plugin uses standard SquirrelMail init function and 
+hook calls to control options available to end user. Instead of adding 
+own options, it reconstructs $squirrelmail_plugin_hooks, $optpage_data
+and $optpage_blocks data.
+
+If settings are enforced with $fp_forced_settings setting, plugin tries
+to hide settings from end user. Plugin can control display of individual 
+SquirrelMail options only when those options use SquirrelMail option 
+widgets available in SquirrelMail 1.2.0 and newer.
+
+If plugins don't use widgets, forced_prefs plugin can control display 
+of options only by removing all plugin options. If user knows internals 
+of SquirrelMail script layout, he or she is still able to connect to 
+plugin option pages or tweak standard SquirrelMail forms and try changing 
+enforced settings.
+
+If plugins use own option widget blocks, forced_prefs plugin must be 
+updated to use hooks provided by those plugins. See advanced_settings 
+plugin for example.
+
+$Date: 2006/04/18 09:47:37 $
